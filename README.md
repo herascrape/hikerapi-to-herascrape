@@ -1,6 +1,6 @@
 # HikerAPI → herascrape
 
-Move your HikerAPI integration to [herascrape](https://herascrape.com), the
+Move your HikerAPI integration to [herascrape](https://herascrape.com/?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration), the
 HikerAPI alternative, in one paste. Same Instagram data, returned as
 **Instagram's own JSON**, so your parsing code does not change, behind a
 smaller, cheaper, faster API.
@@ -21,7 +21,7 @@ smaller, cheaper, faster API.
 - **Free trial balance**, no card: run the whole migration before you pay
   anything.
 
-See the full [herascrape vs HikerAPI comparison](https://herascrape.com/compare/herascrape-vs-hikerapi).
+See the full [herascrape vs HikerAPI comparison](https://herascrape.com/compare/herascrape-vs-hikerapi?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration).
 
 ## Migrate in one paste
 
@@ -69,7 +69,7 @@ method (several HikerAPI methods often collapse onto the same one):
 ```
 
 The full translation tables live in the
-[migration guide](https://herascrape.com/docs/guides/hikerapi-migration); the
+[migration guide](https://herascrape.com/docs/guides/hikerapi-migration?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration); the
 prompt reads them so you do not have to.
 
 ## What we do not have
@@ -79,7 +79,7 @@ An honest list, so you find out here rather than in production:
 - **Not implemented:** related-profile suggestions, guides, media share
   template, owner-only insights, offensive-text check, reels search, and the
   audio canonical-id / stream lookups. If one of these blocks you,
-  [tell us](https://herascrape.com); several are small.
+  [tell us](https://herascrape.com/?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration); several are small.
 - **Standalone geo search** was removed by Instagram; the venue picker behind
   `/search/places` covers the common case.
 
@@ -88,11 +88,11 @@ translates-elsewhere, no-equivalent, or removed-by-Instagram.
 
 ## Links
 
-- [Migration guide](https://herascrape.com/docs/guides/hikerapi-migration)
-- [herascrape vs HikerAPI](https://herascrape.com/compare/herascrape-vs-hikerapi)
-  · [HikerAPI alternative](https://herascrape.com/alternatives/hikerapi-alternative)
+- [Migration guide](https://herascrape.com/docs/guides/hikerapi-migration?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration)
+- [herascrape vs HikerAPI](https://herascrape.com/compare/herascrape-vs-hikerapi?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration)
+  · [HikerAPI alternative](https://herascrape.com/alternatives/hikerapi-alternative?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration)
 - [herascrape client: Python & TypeScript](https://github.com/herascrape/herascrape)
-- [Docs](https://herascrape.com/docs)
+- [Docs](https://herascrape.com/docs?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration)
 
 ---
 
