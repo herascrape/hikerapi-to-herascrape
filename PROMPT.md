@@ -56,18 +56,23 @@ Then, across the whole repo:
 8. Replace all pagination parameters (page_id, next_page_id, max_id,
    next_max_id, min_id, end_cursor, page_token, reels_max_id,
    profile_grid_items_cursor, repost_next_max_id) with a single `cursor`. Read
-   the next token from `next_cursor` and loop while `has_more` is true. Two
+   the next token from `next_cursor` and loop while `has_more` is true. Three
    exceptions: GET /posts/{id}/comments pages on `min_id` (read `next_min_id`,
-   loop while `has_more`), and GET /users/{id}/posts pages on `cursor` taken
-   from `feed.profile_grid_items_cursor` while `feed.more_available` is true.
-   Never page /users/{id}/posts on max_id.
+   loop while `has_more`); GET /users/{id}/posts pages on `cursor` taken
+   from `feed.profile_grid_items_cursor` while `feed.more_available` is true
+   (never page it on max_id); and GET /search/top returns
+   {edges, next_cursor} with no `has_more`, so loop while `next_cursor` is
+   set. Search endpoints also need client-generated `search_session_id` and
+   `serp_session_id` UUIDs (audio also `browse_session_id`): send the same
+   ones on every page of one search, or the cursor is rejected as
+   `invalid_cursor`. The herascrape clients do this for you.
 9. Delete these parameters: safe_int, flat, force, amount, rank_token,
    expand_suggestion, can_support_threading.
 10. Every success is wrapped as {"status": "success", "data": ...}: read `data`
     first (the herascrape SDKs do this for you). Inside `data`, lists come as
-    {items, next_cursor, has_more}; where the old code read a bare array, read
-    `items`. Object fields are otherwise unchanged — both APIs return
-    Instagram's own JSON. Errors come as
+    {items, next_cursor, has_more} unless step 8 says otherwise; where the old
+    code read a bare array, read `items`. Object fields are otherwise
+    unchanged — both APIs return Instagram's own JSON. Errors come as
     {"status": ..., "error_code": ..., "detail": ...}; branch on `error_code`.
 11. Story / highlight by id: GET /stories/{id} returns a single story by its
     media pk (live stories only); GET /highlights/{highlight_id} takes a
@@ -75,10 +80,11 @@ Then, across the whole repo:
     GET /oembed?url=<url> (a free call) to the story's media pk or the
     highlight's reel_id, then call the endpoint above. A user's whole active
     story tray is GET /users/{id}/stories.
-12. Respect the client rate limit. The herascrape client's limiter defaults to
-    50 requests/second per key — keep that default; do not lower it to 10. If
-    the code fans out with raw HTTP instead of the client, cap concurrency to
-    the same budget.
+12. Respect the rate limit: 50 requests/second per account, shared by all of
+    its keys. The herascrape client's limiter defaults to the same 50/s — keep
+    that default; do not lower it to 10. If several processes share one
+    account, split the budget between them. If the code fans out with raw
+    HTTP instead of the client, cap it to the same budget.
 13. Do NOT invent endpoints. If a call maps to something in the "What we do not
     have" section of the migration guide, leave it in place and mark it with a
     TODO naming the limitation. Do the same for any field you cannot confidently
