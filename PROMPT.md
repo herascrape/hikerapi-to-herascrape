@@ -63,9 +63,12 @@ Then, across the whole repo:
    Never page /users/{id}/posts on max_id.
 9. Delete these parameters: safe_int, flat, force, amount, rank_token,
    expand_suggestion, can_support_threading.
-10. List responses are wrapped in {items, next_cursor, has_more}. Where the old
-    code read a bare array, read `items`. Object fields are otherwise unchanged
-    — both APIs return Instagram's own JSON.
+10. Every success is wrapped as {"status": "success", "data": ...}: read `data`
+    first (the herascrape SDKs do this for you). Inside `data`, lists come as
+    {items, next_cursor, has_more}; where the old code read a bare array, read
+    `items`. Object fields are otherwise unchanged — both APIs return
+    Instagram's own JSON. Errors come as
+    {"status": ..., "error_code": ..., "detail": ...}; branch on `error_code`.
 11. Story / highlight by id: GET /stories/{id} returns a single story by its
     media pk (live stories only); GET /highlights/{highlight_id} takes a
     highlight id. By URL: resolve the ready-made URL first with

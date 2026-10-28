@@ -2,8 +2,8 @@
 
 Move your HikerAPI integration to [herascrape](https://herascrape.com/?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration), the
 HikerAPI alternative, in one paste. Same Instagram data, returned as
-**Instagram's own JSON**, so your parsing code does not change, behind a
-smaller, cheaper, faster API.
+**Instagram's own JSON** in a `data` field, so beyond reading `data` your
+parsing code does not change, behind a smaller, cheaper, faster API.
 
 - **37 endpoints, not 154.** HikerAPI exposes the same capability under `/v1`,
   `/v2`, `/v3`, `/gql`, `/g1`, `/g2` and `/a2`. herascrape collapses each to one
@@ -13,9 +13,10 @@ smaller, cheaper, faster API.
   included).
 - **Faster.** In our head-to-head measurements, p50 / p90 of
   **1024 / 1644 ms** against HikerAPI's **1356 / 2358 ms**.
-- **Instagram's JSON, verbatim.** Object fields land where HikerAPI's `v1` / `v2`
-  payloads already put them; list responses gain an
-  `{items, next_cursor, has_more}` wrapper.
+- **Instagram's JSON, verbatim.** Every response is
+  `{"status": "success", "data": ...}`. Inside `data`, object fields land where
+  HikerAPI's `v1` / `v2` payloads already put them, and lists come as
+  `{items, next_cursor, has_more}`.
 - **Fresh, not cached.** Every call fetches live from Instagram: real-time
   data, not a stale snapshot.
 - **Free trial balance**, no card: run the whole migration before you pay
