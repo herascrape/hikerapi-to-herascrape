@@ -10,17 +10,17 @@ parsing code does not change, behind a smaller, cheaper, faster API.
   RESTful path and picks the source for you.
 - **Flat $0.0004 per call.** One price for every endpoint, billed only on
   success: no credit currency, and no per-endpoint premium (comments and likers
-  included).
+  included). The media resolver and oEmbed are free.
 - **Faster.** In our head-to-head measurements, p50 / p90 of
   **1024 / 1644 ms** against HikerAPI's **1356 / 2358 ms**.
 - **Instagram's JSON, verbatim.** Every response is
   `{"status": "success", "data": ...}`. Inside `data`, object fields land where
-  HikerAPI's `v1` / `v2` payloads already put them, and lists come as
+  HikerAPI's `v1` / `v2` payloads already put them, and most lists come as
   `{items, next_cursor, has_more}`.
 - **Fresh, not cached.** Every call fetches live from Instagram: real-time
   data, not a stale snapshot.
-- **Free trial balance**, no card: run the whole migration before you pay
-  anything.
+- **$1 free balance** when you connect Telegram, no card: about 2,500 calls
+  to run the migration before you pay anything.
 
 See the full [herascrape vs HikerAPI comparison](https://herascrape.com/compare/herascrape-vs-hikerapi?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration).
 
@@ -40,7 +40,7 @@ Three mechanical edits, then the paths.
 | --- | --- | --- |
 | Base URL | `api.hikerapi.com` | `api.herascrape.com` |
 | Auth header | `x-access-key` | `x-api-key` |
-| Paging | a different param per endpoint | one opaque `cursor` |
+| Paging | a different param per endpoint | one opaque `cursor`, except posts, comments and top search |
 
 ```diff
 - GET https://api.hikerapi.com/v2/user/followers?user_id=25025320&page_id=ABC
