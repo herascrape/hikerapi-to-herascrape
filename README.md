@@ -1,3 +1,5 @@
+[![HikerAPI alternative: migrate in one paste, same Instagram data](assets/readme-banner.png)](https://herascrape.com/?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration)
+
 # HikerAPI → herascrape
 
 Move your HikerAPI integration to [herascrape](https://herascrape.com/?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration), the
