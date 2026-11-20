@@ -26,6 +26,11 @@ parsing code does not change, behind a smaller, cheaper, faster API.
 
 See the full [herascrape vs HikerAPI comparison](https://herascrape.com/compare/herascrape-vs-hikerapi?utm_source=github&utm_medium=readme&utm_campaign=hikerapi-migration).
 
+<p>
+  <a href="https://datacircle.dev/best-instagram-profile-api"><img src="https://datacircle.dev/badge/best-instagram-profile-api/herascrape.svg" alt="Datacircle ranking: #1 Instagram Profile API" width="160" height="108"></a>
+  <a href="https://datacircle.dev/best-instagram-post-api"><img src="https://datacircle.dev/badge/best-instagram-post-api/herascrape.svg" alt="Datacircle ranking: #1 Instagram Post API" width="160" height="108"></a>
+</p>
+
 ## Migrate in one paste
 
 Paste [`PROMPT.md`](PROMPT.md) into your coding agent (Claude Code, Cursor, or
