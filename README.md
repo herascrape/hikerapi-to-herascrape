@@ -5,7 +5,7 @@ HikerAPI alternative, in one paste. Same Instagram data, returned as
 **Instagram's own JSON** in a `data` field, so beyond reading `data` your
 parsing code does not change, behind a smaller, cheaper, faster API.
 
-- **37 endpoints, not 154.** HikerAPI exposes the same capability under `/v1`,
+- **44 endpoints, not 154.** HikerAPI exposes the same capability under `/v1`,
   `/v2`, `/v3`, `/gql`, `/g1`, `/g2` and `/a2`. herascrape collapses each to one
   RESTful path and picks the source for you.
 - **Flat $0.0004 per call.** One price for every endpoint, billed only on
